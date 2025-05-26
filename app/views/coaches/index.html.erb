@@ -1,0 +1,5 @@
+<h1>Coaches</h1>
+
+<% @coaches.each do |c| %>
+  <li><%= link_to c.full_name, coach_path(c.id) %></li>
+<% end %>

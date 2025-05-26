@@ -1,5 +1,9 @@
 class CoachesController < ApplicationController
   def index
-    @coaches = Coach.includes(:appointments, :appointment_reviews).all
+    @coaches = Coach.all
+  end
+
+  def show
+    @coach = Coach.includes(:appointments, :appointment_reviews).find params[:id]
   end
 end
