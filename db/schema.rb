@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_26_225251) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_26_230237) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointment_reviews", force: :cascade do |t|
+    t.bigint "coach_id", null: false
+    t.bigint "student_id", null: false
+    t.bigint "appointment_id", null: false
+    t.integer "rating", null: false
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appointment_id"], name: "index_appointment_reviews_on_appointment_id"
+    t.index ["coach_id"], name: "index_appointment_reviews_on_coach_id"
+    t.index ["student_id"], name: "index_appointment_reviews_on_student_id"
+  end
 
   create_table "appointments", force: :cascade do |t|
     t.bigint "coach_id", null: false
@@ -52,6 +65,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_26_225251) do
     t.index ["phone_number"], name: "index_students_on_phone_number", unique: true
   end
 
+  add_foreign_key "appointment_reviews", "appointments"
+  add_foreign_key "appointment_reviews", "coaches"
+  add_foreign_key "appointment_reviews", "students"
   add_foreign_key "appointments", "coaches"
   add_foreign_key "appointments", "students"
 end
