@@ -1,25 +1,11 @@
 # stepful_challenge
 code challenge for Stepful
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to my code challenge. 
 
-Things you may want to cover:
+To get started:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Clone down the repo
+- run `rails db:create` to create the databases.
+- run `rails db:migrate` to run migrations.
+- run `rails db:seed` to seed the database.
