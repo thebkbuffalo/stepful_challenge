@@ -13,5 +13,7 @@ USING RUBY 3.2.2 and RAILS 7.1.0
 - run `rails db:seed` to seed the database.
 - (or `rails db:setup` would work as well)
 
+- `bundle install`
+
 - start a ralis server with `rails s` 
 
