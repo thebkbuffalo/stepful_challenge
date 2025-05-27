@@ -5,13 +5,25 @@ class Appointment < ApplicationRecord
 
   validates :coach_id, :start_time, :end_time, presence: true
 
-  def box_header
-    return 'BOOKED' if booked
+  scope :open_appointments, -> { where(booked: false, student_id: nil) }
+  scope :booked_appointments, -> { where(booked: true).where.not(student_id: nil) }
+  scope :completed_appointments, -> { where("end_time < ?", DateTime.now) }
 
-    return 'OPEN' if !booked
+  def box_header
+    if booked && self.completed?
+      'Completed'
+    elsif booked && !self.completed?
+      'Booked'
+    elsif !booked
+      'Open'
+    end
   end
 
   def show_phone_number?
     student_id.present? && booked
+  end
+
+  def completed?
+    DateTime.now > end_time
   end
 end

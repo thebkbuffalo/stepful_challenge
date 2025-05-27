@@ -1,5 +1,12 @@
 <h1><%= @coach.full_name %></h1>
 
+<hr>
+<div class='inline-block'>
+  <%= link_to 'All Appointments', coach_path(@coach.id)%> | 
+  <%= link_to 'Open Appointments', coach_path(@coach.id, appointment_type: 'open')%> | 
+  <%= link_to 'Booked Appointments', coach_path(@coach.id, appointment_type: 'booked')%> | 
+  <%= link_to 'Completed Appointments', coach_path(@coach.id, appointment_type: 'completed')%>
+</div>
 <% @appointments.each do |a| %>
   <div class='row border w-25 p-1 my-3 rounded'>
     <h5><%= a.box_header %></h5>
