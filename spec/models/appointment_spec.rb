@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Appointment, type: :model do
+  # all a bit of a mess without any proper DB management using factories and all that
+  # however here I would test all model methods
+  # box_header, show_phone_number, completed, has_review, can_review
+  # as all these should be tested.
+
   # before(:all) do
 
   # end
