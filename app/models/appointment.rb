@@ -26,4 +26,12 @@ class Appointment < ApplicationRecord
   def completed?
     DateTime.now > end_time
   end
+
+  def has_review?
+    appointment_review.present?
+  end
+
+  def can_review?
+    !self.appointment_review.present? && DateTime.now > end_time && student_id.present?
+  end
 end

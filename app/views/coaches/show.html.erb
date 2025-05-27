@@ -24,5 +24,15 @@
     <% if a.show_phone_number? %>
       <p>Phone Number: <%= a.student.phone_number %></p>
     <% end %>
+    <% if a.can_review? %>
+      <%= link_to 'Add Review', new_appointment_review_path(appt_id: a.id), class: 'btn btn-success' %>
+    <% end %>
+    <% if a.has_review? %>
+      <hr>
+      <p class='fw-bold'>Review</p>
+      <p>Rating: <%= a.appointment_review.rating %></p>
+      <p>Notes:</p>
+        <p><%= a.appointment_review.notes %></p>
+    <% end %>
   </div>
 <% end %>

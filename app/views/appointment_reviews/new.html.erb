@@ -1,0 +1,18 @@
+<h1>Add A Review</h1>
+<h5>Appointment Details:</h5>
+<p>Student: <%= @appointment.student.full_name %></p>
+<p>Start Time: <%= @appointment.start_time.strftime('%D %I:%M%P') %>
+<p>End Time: <%= @appointment.end_time.strftime('%D %I:%M%P') %></p>
+<hr>
+<h1>Review</h1>
+<div class='row w-25'>
+  <%= form_for @new_appointment_review do |f| %>
+    <%= f.hidden_field 'appt_id', value: @appointment.id %>
+    <p>Rating:</p>
+    <%= f.number_field :rating, max: 5, class: 'form-control' %>
+    <p>Notes:</p>
+    <%= f.text_area :notes, class: 'form-control' %>
+    <br>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>
