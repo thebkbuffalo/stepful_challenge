@@ -6,6 +6,9 @@
     <p>Coach: <%= a.coach.full_name %></p>
     <p>Start Time: <%= a.start_time.strftime('%D %I:%M%P') %></p>
     <p>End Time: <%= a.end_time.strftime('%D %I:%M%P') %></p>
+    <% if a.show_phone_number? %>
+      <p>Phone Number: <%= a.coach.phone_number %></p>
+    <% end %>
   </div>
 <% end %>
 <hr>
