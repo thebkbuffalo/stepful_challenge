@@ -5,7 +5,7 @@ class CoachesController < ApplicationController
 
   def show
     @coach = Coach.includes(:appointments, :appointment_reviews).find params[:id]
-    @appointments = @coach.appointments
+    @new_appointment = Appointment.new
     if params['appointment_type'].present?
       case params['appointment_type']
       when 'open'

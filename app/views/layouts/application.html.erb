@@ -21,6 +21,12 @@
       <%= link_to 'Students', students_path, class: 'btn btn-primary ' %>
     </div>
     <div class='m-5'>
+      <% flash.each do |type, msg| %>
+        <div class="alert alert-primary" role="alert">
+          <%= msg %>
+        </div>
+      <% end %>
+      
       <%= yield %>
     <div>
   </body>

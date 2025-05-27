@@ -1,5 +1,11 @@
 <h1><%= @coach.full_name %></h1>
-
+<hr>
+<h5>Add new Appointment</h5>
+<%= form_for @new_appointment do |f| %>
+  <%= f.datetime_select :start_time, ampm: true %>
+  <%= f.hidden_field 'coach_id', value: @coach.id %>
+  <%= f.submit class: 'btn btn-success'%>
+<% end %>
 <hr>
 <div class='inline-block'>
   <%= link_to 'All Appointments', coach_path(@coach.id)%> | 
