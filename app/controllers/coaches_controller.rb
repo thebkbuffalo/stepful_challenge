@@ -5,5 +5,6 @@ class CoachesController < ApplicationController
 
   def show
     @coach = Coach.includes(:appointments, :appointment_reviews).find params[:id]
+    @appointments = @coach.appointments
   end
 end

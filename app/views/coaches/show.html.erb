@@ -1,1 +1,15 @@
 <h1><%= @coach.full_name %></h1>
+
+<% @appointments.each do |a| %>
+  <div class='row border w-25 p-1 my-3 rounded'>
+    <h5><%= a.box_header %></h5>
+    <% if a.student_id.present? %>
+      <p><%= a.student.full_name %></p>
+    <% end %>
+    <p>Start Time: <%= a.start_time.strftime('%D %I:%M%P') %></p>
+    <p>End Time: <%= a.end_time.strftime('%D %I:%M%P') %></p>
+    <% if a.show_phone_number? %>
+      <p>Phone Number: <%= a.student.phone_number %></p>
+    <% end %>
+  </div>
+<% end %>
