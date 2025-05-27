@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   resources :coaches
   resources :students
-  resources :appointments
+  resources :appointments do
+    collection do
+      get :book_appointment
+    end
+  end
   resources :appointment_reviews
 end

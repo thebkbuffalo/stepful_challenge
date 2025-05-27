@@ -5,5 +5,7 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.includes(:appointments).find params[:id]
+    @appointments = @student.appointments
+    @open_appointments = Appointment.open_appointments
   end
 end

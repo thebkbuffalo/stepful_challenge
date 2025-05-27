@@ -11,4 +11,12 @@ class AppointmentsController < ApplicationController
       redirect_to coach_path(coach_id), flash: {notice: 'Appointment Created.'}
     end
   end
+
+  def book_appointment
+    appointment = Appointment.find params['appt_id']
+    student_id = params['student_id'].to_i
+    binding.pry
+    appointment.update(student_id:, booked: true)
+    redirect_to student_path(student_id), flash: {notice: 'Appointment Booked'}
+  end
 end

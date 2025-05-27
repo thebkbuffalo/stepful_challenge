@@ -1,1 +1,20 @@
 <h1><%= @student.full_name %></h1>
+<hr>
+<h5>Your Booked Appointments</h5>
+<% @appointments.each do |a| %>
+  <div class='row p-1 m-2 border border-black w-25 rounded'>
+    <p>Coach: <%= a.coach.full_name %></p>
+    <p>Start Time: <%= a.start_time.strftime('%D %I:%M%P') %></p>
+    <p>End Time: <%= a.end_time.strftime('%D %I:%M%P') %></p>
+  </div>
+<% end %>
+<hr>
+<h5>Open Appointments</h5>
+<% @open_appointments.each do |a| %>
+  <div class='row p-1 m-2 border border-black w-25 rounded'>
+    <p>Coach: <%= a.coach.full_name %></p>
+    <p>Start Time: <%= a.start_time.strftime('%D %I:%M%P') %></p>
+    <p>End Time: <%= a.end_time.strftime('%D %I:%M%P') %></p>
+    <%= link_to 'Book Appointment', book_appointment_appointments_path(appt_id: a.id, student_id: @student.id), class: 'btn btn-success' %>
+  </div>
+<% end %>
